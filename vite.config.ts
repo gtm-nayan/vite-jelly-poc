@@ -12,7 +12,6 @@ const plugin_jelly: Plugin = {
 	},
 	handleHotUpdate: (ctx) => {
 		/** @todo actual hmr */
-		/** @todo restart leaves behind stray instances which crashes the bot with api errors */
 		client?.destroy();
 		ctx.server.restart();
 	},
