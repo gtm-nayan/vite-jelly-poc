@@ -1,10 +1,9 @@
 import { Intents } from "discord.js";
 import { JellyCommands } from "jellycommands";
 
-/**@todo negative glob pattern to ignore files */
-
+/**@todo also ignore folders starting with _ */
 const commands = Object.entries(
-	import.meta.globEager("./commands/**/*.ts")
+	import.meta.globEager("./commands/**/!(_*).ts")
 ).map((cm) => cm[1].default);
 
 const client = new JellyCommands({

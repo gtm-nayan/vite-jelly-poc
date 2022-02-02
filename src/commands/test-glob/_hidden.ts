@@ -1,11 +1,11 @@
 import { command } from "jellycommands";
 
-/**test hmr */
+/**test hmr*/
 export default command({
-	name: "ping",
-	description: "Ping!",
+	name: "hidden",
+	description: "You shouldn't be seeing this!",
 	global: true,
 	run: ({ interaction }) => {
-		interaction.reply("Pong!");
+		interaction.reply("Peek-a-boo!");
 	},
 });
