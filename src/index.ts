@@ -12,8 +12,7 @@ const client = new JellyCommands({
 	debug: import.meta.env.DEV,
 	cache: import.meta.env.DEV,
 	dev: {
-		/** @todo Not having this is breaking stuff, u wot m8? */
-		global: true,
+		global: import.meta.env.DEV,
 		guilds: ["803996266513956904"],
 	},
 	clientOptions: {
