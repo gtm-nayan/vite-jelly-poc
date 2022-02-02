@@ -1,24 +1,8 @@
-import { defineConfig, Plugin } from "vite";
-import { JellyCommands } from "jellycommands";
-
-let client: JellyCommands;
-
-const plugin_jelly: Plugin = {
-	name: "jelly",
-	configureServer: (server) => {
-		server.ssrLoadModule("src/index.ts").then((module) => {
-			client = module.default;
-		});
-	},
-	handleHotUpdate: (ctx) => {
-		/** @todo actual hmr */
-		client?.destroy();
-		ctx.server.restart();
-	},
-};
+import { defineConfig } from "vite";
+import plugin_jelly from "./plugin.js";
 
 export default defineConfig({
-	plugins: [plugin_jelly],
+	plugins: [plugin_jelly("src/index.ts")],
 	build: {
 		ssr: true,
 		rollupOptions: {
