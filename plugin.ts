@@ -16,11 +16,14 @@ export default function plugin_jelly(
 		},
 		handleHotUpdate: (ctx) => {
 			/**@todo actual hmr */
-			client.destroy();
-			ctx.server.restart();
+			if (!ctx.modules.every((m) => m.url.includes("/.jellycommands/"))) {
+				client?.destroy();
+				ctx.server.restart();
+			}
 		},
 		config() {
 			return {
+				/**@todo remove exports from entry point during build */
 				build: {
 					ssr: true,
 					rollupOptions: {
